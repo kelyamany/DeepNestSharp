@@ -15,5 +15,10 @@
     {
       MessageBox.Show($"{ex.Message}/n{ex.StackTrace}");
     }
+
+    public void DisplayMessageBox(string text, string caption, DeepNestLib.MessageBoxIcon icon)
+    {
+      MessageBox.Show(text, caption, MessageBoxButtons.OK, (System.Windows.Forms.MessageBoxIcon)icon);
+    }
   }
 }
