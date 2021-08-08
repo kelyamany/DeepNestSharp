@@ -13,11 +13,8 @@
     private readonly IPartPlacement partPlacement;
     private readonly Point originalPosition;
     private readonly double originalRotation;
-    private System.Windows.Media.PointCollection? points;
     private RelayCommand? resetCommand;
     private IAsyncRelayCommand? loadExactCommand;
-
-    public event EventHandler RenderChildren;
 
     public ObservablePartPlacement(IPartPlacement partPlacement)
     {
@@ -27,55 +24,16 @@
       this.PropertyChanged += this.ObservablePartPlacement_PropertyChanged;
     }
 
+    public bool IsDragging
+    {
+      get => partPlacement.IsDragging;
+      set => SetProperty(nameof(IsDragging), () => partPlacement.IsDragging, v => partPlacement.IsDragging = v, value);
+    }
+
     public int Source
     {
       get => partPlacement.Source;
       set => SetProperty(nameof(Source), () => partPlacement.Source, v => partPlacement.Source = v, value);
-    }
-
-    public System.Windows.Media.PointCollection Points
-    {
-      get
-      {
-        if (points == null || points.Count == 0)
-        {
-          points = new System.Windows.Media.PointCollection();
-          INfp loadedNfp;
-
-          //var fi = new FileInfo(partPlacement.Part.Name);
-          //var baseDir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-          //while (!fi.Exists && baseDir != null)
-          //{
-          //  fi = new FileInfo(Path.Join(baseDir.FullName, partPlacement.Part.Name));
-          //  if (fi.Exists)
-          //  {
-          //    break;
-          //  }
-          //  else
-          //  {
-          //    baseDir = baseDir.Parent;
-          //  }
-          //}
-
-          //if (fi.Exists && DxfParser.LoadDxfFile(fi.FullName).TryGetNfp(partPlacement.Part.Source, out loadedNfp))
-          //{
-          //  loadedNfp = loadedNfp.Rotate(partPlacement.Part.Rotation);
-          //  loadedNfp.X = partPlacement.Part.X;
-          //  loadedNfp.Y = partPlacement.Part.Y;
-          //}
-          //else
-          //{
-          loadedNfp = partPlacement.Part;
-          //}
-
-          foreach (var p in loadedNfp.Points)
-          {
-            points.Add(new System.Windows.Point(p.X, p.Y));
-          }
-        }
-
-        return points;
-      }
     }
 
     public int Id
@@ -193,7 +151,6 @@
       {
         loadedNfp = loadedNfp.Rotate(this.Part.Rotation);
         this.Part.ReplacePoints(loadedNfp);
-        OnPropertyChanged(nameof(Points));
         OnPropertyChanged(nameof(IsExact));
         loadExactCommand?.NotifyCanExecuteChanged();
       }
