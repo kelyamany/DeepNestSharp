@@ -12,8 +12,11 @@
     [Fact]
     public void ShouldRoundTripSerialize()
     {
-      var sut = new ProjectInfo();
-      ProjectInfo actual = ProjectInfo.FromJson(sut.ToJson());
+      var config = SvgNest.Config;
+      var sut = new ProjectInfo(config);
+      sut.SheetLoadInfos.Should().NotBeEmpty();
+      var json = sut.ToJson();
+      ProjectInfo actual = ProjectInfo.FromJson(config, json);
 
       actual.Should().BeEquivalentTo(sut);
     }
