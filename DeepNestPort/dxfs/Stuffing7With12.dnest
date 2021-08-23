@@ -5,7 +5,7 @@
       "Path": "C:\\Git\\DeepNestPort\\DeepNestPort\\dxfs\\_1.dxf",
       "Quantity": 1,
       "IsExists": true,
-      "IsIncluded": true,
+      "IsIncluded": false,
       "IsPriority": false,
       "IsMultiplied": false,
       "StrictAngle": 0
@@ -68,7 +68,7 @@
       "IsIncluded": true,
       "IsPriority": false,
       "IsMultiplied": false,
-      "StrictAngle": 0
+      "StrictAngle": 1
     },
     {
       "Name": "_8.dxf",
@@ -95,7 +95,7 @@
       "Path": "C:\\Git\\DeepNestPort\\DeepNestPort\\dxfs\\_10.dxf",
       "Quantity": 1,
       "IsExists": true,
-      "IsIncluded": true,
+      "IsIncluded": false,
       "IsPriority": false,
       "IsMultiplied": false,
       "StrictAngle": 0
@@ -113,7 +113,7 @@
     {
       "Name": "_12.dxf",
       "Path": "C:\\Git\\DeepNestPort\\DeepNestPort\\dxfs\\_12.dxf",
-      "Quantity": 1,
+      "Quantity": 3,
       "IsExists": true,
       "IsIncluded": true,
       "IsPriority": false,
@@ -125,7 +125,7 @@
       "Path": "C:\\Git\\DeepNestPort\\DeepNestPort\\dxfs\\Donut.dxf",
       "Quantity": 1,
       "IsExists": true,
-      "IsIncluded": true,
+      "IsIncluded": false,
       "IsPriority": false,
       "IsMultiplied": false,
       "StrictAngle": 0
@@ -133,8 +133,8 @@
   ],
   "SheetLoadInfos": [
     {
-      "Width": 300,
-      "Height": 160,
+      "Width": 160,
+      "Height": 196,
       "Quantity": 3
     }
   ],
